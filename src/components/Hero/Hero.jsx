@@ -1,4 +1,6 @@
-import Spline from "@splinetool/react-spline";
+import React, { Suspense } from "react";
+
+const Spline = React.lazy(() => import("@splinetool/react-spline"));
 import s from "./Hero.module.scss";
 
 export const Hero = () => {
@@ -18,7 +20,9 @@ export const Hero = () => {
             </p>
           </div>
           <div className={s.hero__spline}>
-            <Spline className="spline-viewer" scene="/cube.splinecode" />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Spline className="spline-viewer" scene="/cube.splinecode" />
+            </Suspense>
           </div>
         </div>
       </section>

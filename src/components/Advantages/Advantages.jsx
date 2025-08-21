@@ -6,10 +6,11 @@ import React, {
   useEffect,
   useCallback,
   useMemo,
+  Suspense,
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import s from "./Advantages.module.scss";
-import Spline from "@splinetool/react-spline";
+const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
 /* tabs как у тебя */
 const tabs = [
@@ -284,7 +285,9 @@ export const Advantages = () => {
                     }}
                     transition={{ duration: 0.45, ease: [0.22, 0.9, 0.2, 1] }}
                   >
-                    <Spline scene={scene} className={s.spline} />
+                    <Suspense fallback={<div>Loading...</div>}>
+                      <Spline scene={scene} className={s.spline} />
+                    </Suspense>
                   </motion.div>
                 );
               })}
