@@ -17,19 +17,19 @@ const tabs = [
     id: "tab-1",
     title: "Analytics",
     text: "Product Discovery: BPMN diagrams, ER-diagrams, Userflow, User Stories, CJM, Product Requirements Document",
-    splineScene: "https://prod.spline.design/xDOAvUIvtJASZrMt/scene.splinecode",
+    splineScene: "/ad1.splinecode",
   },
   {
     id: "tab-2",
     title: "UX/UI-design",
     text: "UX / UI design details and case studies...",
-    splineScene: "https://prod.spline.design/mXOgiKgZn0ZzVzIm/scene.splinecode",
+    splineScene: "/ad2.splinecode",
   },
   {
     id: "tab-3",
     title: "Development",
     text: "Frontend & Backend development services...",
-    splineScene: "https://prod.spline.design/xDOAvUIvtJASZrMt/scene.splinecode",
+    splineScene: "/ad1.splinecode",
   },
 ];
 

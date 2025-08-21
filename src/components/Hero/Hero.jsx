@@ -5,25 +5,22 @@ export const Hero = () => {
   return (
     <>
       <section className={s.hero} aria-labelledby="hero-title">
-       <div className="container">
+        <div className="container">
           <div className={s.hero__content}>
-          <h1 className={s.hero__title}>
-            UX/UI Design & Development
-            <br /> for Web3
-          </h1>
-          <p className={s.hero__desc}>
-            Design Support and Development for Blockchain, DeFi, Web3, Crypto
-            startups.
-            <br /> From Low-code websites to Full-stack Dapps.
-          </p>
+            <h1 className={s.hero__title}>
+              UX/UI Design & Development
+              <br /> for Web3
+            </h1>
+            <p className={s.hero__desc}>
+              Design Support and Development for Blockchain, DeFi, Web3, Crypto
+              startups.
+              <br /> From Low-code websites to Full-stack Dapps.
+            </p>
+          </div>
+          <div className={s.hero__spline}>
+            <Spline className="spline-viewer" scene="/cube.splinecode" />
+          </div>
         </div>
-        <div className={s.hero__spline}>
-          <Spline
-            className="spline-viewer"
-            scene="https://prod.spline.design/dGhqeyVsio4QRnCO/scene.splinecode"
-          />
-        </div>
-       </div>
       </section>
     </>
   );

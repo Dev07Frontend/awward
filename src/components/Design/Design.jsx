@@ -275,10 +275,7 @@ export const Design = () => {
           </h2>
 
           {isMounted && (
-            <Spline
-              className={s.design__spline}
-              scene="https://prod.spline.design/yi2WcGKo6DhnpI2S/scene.splinecode"
-            />
+            <Spline className={s.design__spline} scene="/cube2.splinecode" />
           )}
 
           <p className={s.design__desc}>
