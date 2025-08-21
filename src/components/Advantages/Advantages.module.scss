@@ -1,0 +1,273 @@
+/* Advantages.module.scss */
+
+:global(:root) {
+  --bg-color: #07070b;
+  --text-color: #fff;
+  --muted: rgba(255, 255, 255, 0.65);
+}
+
+/* Wrapper */
+.advantages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* Main inner wrapper */
+.advantages__wrapper {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 80px 60px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  color: var(--text-color);
+  background: transparent;
+}
+
+/* =========================
+   HIDDEN MEASURER (off-screen)
+   used to measure each variant of the text and compute max height
+   Keep width in sync with .sideText max-width or let JS synchronize.
+   ========================= */
+.textMeasure {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  visibility: hidden;
+  pointer-events: none;
+  width: 440px; /* keep in sync with .sideText max-width */
+  box-sizing: border-box;
+  z-index: -1;
+
+  .measureItem {
+    width: 100%;
+    box-sizing: border-box;
+
+    p {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 150%;
+      color: var(--text-color);
+      word-wrap: break-word;
+    }
+  }
+}
+
+/* =========================
+   LEFT TEXT
+   ========================= */
+.sideLeft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 8px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 480px;
+}
+
+.sideText {
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  /* min-height is set inline by React based on measured max text height */
+  will-change: opacity, transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    margin: 0;
+    font-family: "Manrope", sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--text-color);
+    text-align: center;
+    word-break: break-word;
+  }
+}
+
+/* =========================
+   CENTER (Spline stack)
+   ========================= */
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  min-height: 420px;
+  flex: 0 0 auto;
+}
+
+.splineStack {
+  position: relative;
+  width: 274px;
+  height: 274px;
+  display: block;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Each layer is absolutely positioned — we animate opacity/scale only */
+.splineLayer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  pointer-events: none;
+  transform-origin: center center;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Spline element */
+.spline {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  border-radius: 12px;
+  will-change: transform, opacity;
+  box-sizing: border-box;
+}
+
+/* =========================
+   RIGHT NAV
+   ========================= */
+.sideRight {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: center;
+  height: fit-content;
+  padding-right: 8px;
+  box-sizing: border-box;
+}
+
+.navBtn {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 14px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--muted);
+  font-family: "Manrope", sans-serif;
+  font-size: 18px;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  will-change: transform, color;
+  transition: transform 0.18s ease, color 0.18s ease, background 0.18s ease;
+}
+
+/* hover / active */
+.navBtn:hover {
+  transform: translateX(6px);
+}
+.navBtn.active,
+.navBtn:focus,
+.navBtn[aria-pressed="true"] {
+  color: var(--text-color);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+.titleTxt {
+  font-weight: 600;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 1024px) {
+  .advantages__wrapper {
+    flex-direction: column;
+    padding: 48px 28px;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .sideRight {
+    flex-direction: row;
+    order: 3;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+  }
+
+  .sideLeft {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .center {
+    order: 1;
+  }
+
+  .splineStack {
+    width: 100%;
+    height: 340px;
+    max-width: 720px;
+  }
+
+  /* sync measure width for responsive breakpoints */
+  .textMeasure {
+    width: 100%;
+    max-width: 640px;
+  }
+  .sideText {
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 640px) {
+  .splineStack {
+    height: 260px;
+  }
+  .sideText p {
+    font-size: 14px;
+  }
+  .navBtn {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+  .textMeasure {
+    width: 100%;
+    max-width: 420px;
+  }
+  .sideText {
+    max-width: 420px;
+  }
+}
+
+/* small accessibility & utility tweaks */
+:focus {
+  outline: none;
+}
+button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.12);
+  outline-offset: 2px;
+}
+
+/* end of file */

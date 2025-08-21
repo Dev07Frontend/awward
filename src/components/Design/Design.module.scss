@@ -1,0 +1,70 @@
+.design {
+  position: relative;
+  z-index: 1;
+  padding-top: 100px;
+  height: 100vh;
+  &__spline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 40px;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  &__title {
+    font-family: "Manrope", sans-serif;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 120%;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.18); /* fallback */
+    display: inline-block;
+    position: relative;
+    z-index: 5;
+  }
+  &__desc {
+    position: absolute;
+    bottom: 20px;
+    right: 150px;
+    max-width: 640px;
+    font-family: "Manrope", sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 150%;
+    color: #ffffff;
+  }
+
+  .line {
+    display: inline-block;
+    white-space: pre;
+    will-change: background-size, color, transform;
+    color: rgba(255, 255, 255, 0.18); /* видимо до анимации */
+  }
+
+  /* Экспортируемый CSS-модульный класс — добавляется в JS через s.bgClip */
+  .bgClip {
+    /* ДВА слоя фона:
+       1) верхний (левый) — чисто белый, его ширина анимируется
+       2) нижний — серый (всюду), он виден там, где верхний слой ещё не дошёл
+    */
+    background-image: linear-gradient(90deg, #ffffff 0%, #ffffff 100%),
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.18) 100%
+      );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Safari */
+    color: transparent;
+    /* начальные значения — первый слой 0%, второй 100% */
+    background-size: 0% 100%, 100% 100%;
+    background-position: left center, left center;
+    background-repeat: no-repeat, no-repeat;
+  }
+}

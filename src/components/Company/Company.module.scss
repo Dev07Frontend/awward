@@ -1,0 +1,37 @@
+.company__container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.company__bg {
+  background: #070707;
+  display: flex;
+  align-items: center;
+
+  // линейная анимация без ускорений
+  :global(.swiper-wrapper) {
+    transition-timing-function: linear !important;
+  }
+}
+
+.slide {
+  width: auto !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  //padding: 10px;
+}
+
+.logo__img {
+  width: 120px !important;
+  height: 69px !important;
+  object-fit: contain;
+  flex-shrink: 0;
+}
