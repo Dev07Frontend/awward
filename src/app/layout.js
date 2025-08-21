@@ -19,9 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       {/* <SmoothScroll/> */}
-      <body className={`${manrope.className}`}>
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
-      </body>
+      <body className={`${manrope.className}`}>{children}</body>
     </html>
   );
 }
